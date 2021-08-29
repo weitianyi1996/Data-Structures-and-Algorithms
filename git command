@@ -6,3 +6,5 @@ git add .
 git commit -m “add repo”
 git remote add origin 'https://github.com/weitianyi1996/Data-Structures-and-Algorithms.git'
 git push -u origin master
+
+how to run -  echo "3 4" | python APlusB.py
