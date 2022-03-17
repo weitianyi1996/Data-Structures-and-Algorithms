@@ -10,7 +10,7 @@ def lcm_naive(a, b):
         a = a / common_gcd
         b = b / common_gcd
         common_gcd = gcd(a, b)
-    return gcd_acc*a*b
+    return int(gcd_acc*a*b)
 
 def gcd(a,b):
     if b == 0:
