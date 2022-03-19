@@ -2,6 +2,7 @@
 w_list= [w1, w2, ...,wn]
 v_list = [v1, v2, ...,vn]
 
+# complexity O(nlogn) - n external loop, each inner loop constant time
 def fractional_knapsack ():
     res_dic = {}
     current_cap = 0
