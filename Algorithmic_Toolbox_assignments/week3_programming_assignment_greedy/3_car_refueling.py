@@ -3,24 +3,23 @@ import sys
 
 
 def compute_min_refills(distance, tank, stops):
-    # write your code here
-    curr_dist = 0
-    refill = 0
+    curr_dist = refill = 0
+    stt_pointer = 0
     while curr_dist < distance:
         max_dist = curr_dist + tank
-        if max_dist >= distance:
+        if max_dist > distance:  # arrive
             return refill
-        elif (len(stops) > 0 and max_dist < stops[0]) or (len(stops) == 0 and max_dist < distance):    # cannot arrive
-            return -1
-        else:  # still not reach to end yet, neet to refill
-            i = 0
-            while i < len(stops) and stops[i] <= max_dist:
-                i += 1
-            curr_dist = stops[i-1]  # refill at this station
+        elif (stt_pointer < len(stops) and max_dist < stops[stt_pointer]) or (stt_pointer >= len(stops) and max_dist < distance):  # next stop
+            return -1  # cannot arrive
+        else:  # can arrive next stop
+            while stt_pointer<len(stops) and stops[stt_pointer] < max_dist:  # reach as far as possible using current tank
+                stt_pointer += 1
+            curr_dist = stops[stt_pointer-1]  # refill at this station
             refill += 1
-            stops = stops[i:]
 
 
+
+# print(compute_min_refills(950, 400, [200, 375, 550, 750]))
 # print(compute_min_refills(700, 200, [100, 200, 300, 400]))
 
 if __name__ == '__main__':
