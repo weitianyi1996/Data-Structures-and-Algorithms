@@ -10,7 +10,7 @@ def compute_min_refills(distance, tank, stops):
         max_dist = curr_dist + tank
         if max_dist >= distance:
             return refill
-        elif max_dist < stops[0]:    # cannot arrive
+        elif (len(stops) > 0 and max_dist < stops[0]) or (len(stops) == 0 and max_dist < distance):    # cannot arrive
             return -1
         else:  # still not reach to end yet, neet to refill
             i = 0
@@ -20,7 +20,8 @@ def compute_min_refills(distance, tank, stops):
             refill += 1
             stops = stops[i:]
 
-# print(compute_min_refills(950, 400, [200, 375, 550, 750]))
+
+# print(compute_min_refills(700, 200, [100, 200, 300, 400]))
 
 if __name__ == '__main__':
     d, m, _, *stops = map(int, sys.stdin.read().split())
