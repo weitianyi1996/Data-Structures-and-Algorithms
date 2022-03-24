@@ -9,7 +9,8 @@ def compute_min_refills(distance, tank, stops):
         max_dist = curr_dist + tank
         if max_dist > distance:  # arrive
             return refill
-        elif (stt_pointer < len(stops) and max_dist < stops[stt_pointer]) or (stt_pointer >= len(stops) and max_dist < distance):  # next stop
+        elif (stt_pointer < len(stops) and max_dist < stops[stt_pointer]) \
+                or (stt_pointer >= len(stops) and max_dist < distance):  # next stop
             return -1  # cannot arrive
         else:  # can arrive next stop
             while stt_pointer<len(stops) and stops[stt_pointer] < max_dist:  # reach as far as possible using current tank
