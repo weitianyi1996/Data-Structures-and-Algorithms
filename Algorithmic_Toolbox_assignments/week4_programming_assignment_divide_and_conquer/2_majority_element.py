@@ -4,6 +4,7 @@ import sys
 
 
 def get_majority_element(a, left, right):
+
     if left == right:
         return a[left]
     # if left + 1 == right:
@@ -12,7 +13,6 @@ def get_majority_element(a, left, right):
     mid = left+(right-left)//2
     # print(left, right)
     # print("this is mid {}".format(mid))
-    # print(left)
     l_major = get_majority_element(a, left, mid)  # make recursive call, include boundary
     r_major = get_majority_element(a, mid+1, right)
     if l_major == r_major:
@@ -24,6 +24,7 @@ def get_majority_element(a, left, right):
     else:
         return None
 
+
 def get_frequency(element, lst):
     cnt = 0
     for ele in lst:
@@ -31,7 +32,11 @@ def get_frequency(element, lst):
             cnt += 1
     return cnt
 
-print(get_majority_element([1,1,1,1,2,3],0,5))
+
+
+# print(get_majority_element([512766168,717383758, 5, 126144732, 5, 573799007, 5, 5, 5, 405079772],0,9))
+print(get_majority_element([2, 3, 9, 2, 2], 0, 4))
+
 
 if __name__ == '__main__':
     input = sys.stdin.read()
