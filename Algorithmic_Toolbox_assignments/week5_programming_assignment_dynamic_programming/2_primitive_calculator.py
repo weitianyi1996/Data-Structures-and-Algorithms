@@ -3,7 +3,7 @@ import sys
 
 def optimal_sequence(n):
     if n ==1 :
-        return 1
+        return [1]
     elif n == 2:
         return [1,2]
     elif n == 3:
