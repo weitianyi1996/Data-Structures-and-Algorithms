@@ -28,7 +28,7 @@ def edit_distance(s, t):
                     dp_matrix[col-1, row-1] + 1,  # need to to replace the last character
                 )
             # print(dp_matrix)
-    return dp_matrix[-1, -1]
+    return int(dp_matrix[-1, -1])
 
 
 
