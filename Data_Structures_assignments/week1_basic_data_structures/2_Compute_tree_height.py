@@ -20,6 +20,7 @@ threading.stack_size(2**27)  # new thread will get stack of such size
 
 
 # input - [4,-1,4,1,1]
+# - 0 index, 0,1,2,3,4 - these are the nodes. so node 0's parent node is 4, node 1's parent node is itself
 # Tree
 # children = [[],[3,4],[],[],[0,2] ]
 # parent = [4,-1,4,1,1]
