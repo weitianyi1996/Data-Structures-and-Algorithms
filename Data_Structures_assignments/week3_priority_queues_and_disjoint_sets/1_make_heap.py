@@ -31,8 +31,7 @@ class Heap:
             self.input_array[i] = self.input_array[min_index]
             self.input_array[min_index] = val
 
-            self.swap_array.append(i)  # store this two index
-            self.swap_array.append(min_index)
+            self.swap_array.append((i, min_index))   # store this two index
             self.sift_down(min_index)
 
     def construct_heap(self):
@@ -58,7 +57,7 @@ def main():
 
     heap1 = Heap(data)
     heap1.construct_heap()
-    swaps = heap1.input_array
+    swaps = heap1.swap_array
 
     print(len(swaps))
     for i, j in swaps:
