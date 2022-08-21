@@ -5,7 +5,8 @@
 # next_worker = min(range(2), key=lambda w: next_free_time[w])  # ! i need to compare range(2), based on lambda function!
 # print(next_worker)
 
-
+# thanks to this gives me inspiration: https://github.com/maxis42/Data-Structures-Algorithms-Coursera-UCSD-HSE/blob/master/2%20Data%20Structures/Homeworks/Week%203/2_job_queue/job_queue.py
+# https://github.com/ivankliuk/coursera-data-structures-algorithms/blob/master/data-structures/priority-queues-and-disjoint-sets/job_queue.py
 
 from collections import namedtuple
 
