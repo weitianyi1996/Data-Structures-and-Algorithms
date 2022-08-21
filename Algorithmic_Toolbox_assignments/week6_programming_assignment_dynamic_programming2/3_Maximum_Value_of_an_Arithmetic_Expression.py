@@ -28,10 +28,10 @@ def get_maximum_value(digits, ops):
         for i in range(0, n-s):
             j = i+s  #
             # need to get [i,j]
-            print(i,j)
+            # print(i,j)
             min_dp_matrix[i,j], max_dp_matrix[i,j] = min_and_max(i,j, min_dp_matrix, max_dp_matrix, ops, digits)
-    print(min_dp_matrix)
-    print(max_dp_matrix)
+    # print(min_dp_matrix)
+    # print(max_dp_matrix)
     return int(max_dp_matrix[0, -1])
 
 
@@ -63,9 +63,18 @@ def min_and_max(i, j, min_dp_matrix, max_dp_matrix, ops, digits):
 
 
 
-print(get_maximum_value(digits=[5,8,7,4,8,9], ops=["-","+","*","-", "+"]))
+# print(get_maximum_value(digits=[5,8,7,4,8,9], ops=["-","+","*","-", "+"]))
 
-# if __name__ == "__main__":
-# ops_list = ["+", "-", "*"]
 
-#     print(get_maximum_value(input()))
+if __name__ == "__main__":
+    expression = input()
+    ops, digits = [], []
+
+    for i in expression:
+        if i in ['+', '-', '*']:
+            ops.append(i)
+        else:
+            digits.append(int(i))
+
+    print(get_maximum_value(digits, ops))
+

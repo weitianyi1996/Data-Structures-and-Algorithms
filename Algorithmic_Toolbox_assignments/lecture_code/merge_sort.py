@@ -1,4 +1,4 @@
-# merge sort
+# merge sort implementation
 
 def merge_sort(input_list):
     #  one input list, return a final sorted array
