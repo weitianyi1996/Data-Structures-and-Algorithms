@@ -20,18 +20,12 @@ def process_queries(queries):
     contacts = {}
     for cur_query in queries:
         if cur_query.type == 'add':
-            # if we already have contact with such number,
-            # we should rewrite contact's name
-            for ph_num in contacts.keys():
-                if ph_num == cur_query.number:
-                    contacts[ph_num] = cur_query.name
-                    break
-            else: # otherwise, just add it
-                contacts[cur_query.number] = cur_query.name
+            contacts[cur_query.number] = cur_query.name
         elif cur_query.type == 'del':
-            del contacts[cur_query.number]
-            break
-        else:
+            # delete a number that is not saved
+            if cur_query.number in contacts.keys():
+                del contacts[cur_query.number]
+        else:   # operation for find
             response = 'not found'
             if cur_query.number in contacts.keys():
                 response = contacts[cur_query.number]
