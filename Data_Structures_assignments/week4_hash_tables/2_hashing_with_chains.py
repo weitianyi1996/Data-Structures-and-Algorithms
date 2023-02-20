@@ -30,6 +30,7 @@ class QueryProcessor:
         print('yes' if was_found else 'no')
 
     def write_chain(self, chain):
+        # print all results under the same chain(hash values) at once
         print(' '.join(chain))
 
     def read_query(self):
