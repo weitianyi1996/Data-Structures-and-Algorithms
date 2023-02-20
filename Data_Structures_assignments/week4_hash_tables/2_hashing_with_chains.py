@@ -15,7 +15,7 @@ class QueryProcessor:
     _prime = 1000000007
 
     def __init__(self, bucket_count):
-        self.bucket_count = bucket_count
+        self.bucket_count = bucket_count  # m, total number of buckets, each bucket will append a list includes values that need to be stored
         # store all strings in one list
         # self.elems = []
         self.hash_table = [[] for _ in range(self.bucket_count)]
