@@ -18,6 +18,7 @@ class TreeOrders:
             self.left[i] = b
             self.right[i] = c
 
+        # don't add these list in each function, otherwise when recursive, would rewrite all res to empty!
         self.in_order_res = []
         self.pre_order_res = []
         self.post_order_res = []
