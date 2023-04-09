@@ -3,8 +3,8 @@
 import sys, threading
 
 sys.setrecursionlimit(10**7) # max depth of recursion
-threading.stack_size(2**25)  # new thread will get stack of such size
-
+# threading.stack_size(2**25)  # new thread will get stack of such size
+threading.stack_size(2**27)
 
 class Tree:
     def read(self):
@@ -12,6 +12,7 @@ class Tree:
         self.key = [0 for i in range(self.n)]
         self.left = [0 for i in range(self.n)]
         self.right = [0 for i in range(self.n)]
+
         for i in range(self.n):
             [a, b, c] = map(int, sys.stdin.readline().split())
             self.key[i] = a
@@ -25,6 +26,7 @@ class Tree:
     def in_order_traverse(self, tree):
         if tree == -1:
             return
+
         self.in_order_traverse(self.left[tree])
         self.traverse_res.append(self.key[tree])
         self.in_order_traverse(self.right[tree])
@@ -39,6 +41,10 @@ def IsBinarySearchTree():
     # read from system inputs directly from here
     tree_ins = Tree()
     tree_ins.read()
+
+    # edge case if tree is empty tree - input 0. No left_node_list, then return true
+    if len(tree_ins.left) == 0:
+        return True
 
     # traverse the tree and create the res list
     tree_ins.in_order_traverse(tree=0)
@@ -62,23 +68,3 @@ def main():
     print("INCORRECT")
 
 threading.Thread(target=main).start()
-
-# wrong answer!!
-# def IsBinarySearchTree(tree):
-#   # Implement correct algorithm here
-#   # input tree will look like this
-#   # tree = [[2, 1, 2], [1, -1, -1], [3, -1, -1]]
-#
-#   key_list = [pos[0] for pos in tree]
-#   left_list = [pos[1] for pos in tree]
-#   right_list = [pos[2] for pos in tree]
-#   for i in range(len(tree)):
-#       left_i, right_i = left_list[i], right_list[i]
-#       key_node = key_list[i]
-#       key_left, key_right = key_list[left_i], key_list[right_i]
-#       if left_i > -1 and key_node < key_left:
-#           return False
-#       if right_i > -1 and key_node > key_right:
-#           return False
-#
-#   return True
