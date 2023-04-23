@@ -1,6 +1,9 @@
 # python3
 
 from sys import stdin
+import threading
+threading.stack_size(2**27)
+
 
 
 # Splay tree implementation
@@ -144,9 +147,11 @@ def insert(x):
 def erase(x):
     global root
     # Implement erase yourself
+    # this split function, will still keep the search key
     (left, middle) = split(root, x)  # middle >= x, left <x
     (middle, right) = split(middle, x + 1)  # right >= x+1
-    return merge(left, right)
+    # (left, right) = split(root, x)  # middle >= x, left <x
+    root = merge(left, right)
 
 
 def search(x):
@@ -161,12 +166,13 @@ def search(x):
 
 def sum(fr, to):
     global root
-    (left, middle) = split(root, fr)  # middle >= fr
+    (left, middle) = split(root, fr)  # middle > fr
     (middle, right) = split(middle, to + 1)  # middle < to+1
     ans = 0
     # Complete the implementation of sum
     # go through this middle tree to accumulate the sum
-    ans += middle.sum
+    if middle is not None:
+        ans += middle.sum
 
     # restore to original tree since we already split the tree
     root = merge(merge(left,middle),right)
